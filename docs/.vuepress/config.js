@@ -4,7 +4,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
   lang: 'en-US',
-
+  base: '/almacenesdedatos/',
   title: 'Documentation',
   description: 'My VuePress Documentation Site',
 
