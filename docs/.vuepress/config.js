@@ -16,13 +16,14 @@ export default defineUserConfig({
 
   // Theme configuration
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png', // Update to your preferred logo
+    logo: 'https://media.licdn.com/dms/image/D4D12AQEL7hUrxwEUOA/article-cover_image-shrink_720_1280/0/1710092544422?e=2147483647&v=beta&t=Ata_sW9vOoE972j7aGA16IwnSLjWd8fRS36lqbdcLsI', // Update to your preferred logo
 
     navbar: [
       { text: 'Home', link: '/' },
       { text: 'Theme 1', link: '/guide/introduction' },
       { text: 'Theme 2', link: '/theme2/multidimensional_models' },
       { text: 'Theme 3', link: '/theme3/kimball_method' },
+      { text: 'Theme 4', link: '/theme4/page1_overview' },
     ],
 
     sidebar: {
@@ -65,6 +66,15 @@ export default defineUserConfig({
             '/theme3/advanced_hierarchies.md',
             '/theme3/advanced_use_cases.md',
             '/theme3/case_studies.md',
+          ],
+        },
+      ],
+      '/theme4/': [
+        {
+          text: 'Theme 4: caca',
+          collapsable: false,
+          children: [
+            '/theme4/page1_overview.md',
           ],
         },
       ],

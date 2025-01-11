@@ -1,43 +1,489 @@
-<template><div><h1 id="overview-of-theme-4-queries-in-data-warehousing" tabindex="-1"><a class="header-anchor" href="#overview-of-theme-4-queries-in-data-warehousing"><span>Overview of Theme 4: Queries in Data Warehousing</span></a></h1>
-<p><strong>Theme 4</strong> focuses on querying techniques in data warehousing systems, highlighting advanced SQL features and OLAP operations.</p>
+<template><div><p>Below is Theme 4 split into multiple Markdown files. Each file covers a logical subset of the content related to Data Warehousing Queries (OLAP SQL extensions, window functions, materialized views, dimension creation in Oracle, and MDX). The original text was in Spanish; here, it is presented in English for consistency with previous themes.</p>
+<p>Feel free to rename, reorder, or merge the files depending on your needs. At the end of each file, you will find a Glossary table with key terms mentioned in that file.</p>
+<h1 id="introduction-and-overview" tabindex="-1"><a class="header-anchor" href="#introduction-and-overview"><span>Introduction and Overview</span></a></h1>
+<p>This document covers advanced queries in a Data Warehouse environment using SQL OLAP extensions. We will focus on how databases such as <strong>AdventureWorksDW2019</strong> and <strong>AdventureWorks2019</strong> handle OLAP-specific operations like ROLLUP, CUBE, GROUPING, window functions, and more.</p>
+<h2 id="databases-for-olap-queries" tabindex="-1"><a class="header-anchor" href="#databases-for-olap-queries"><span>Databases for OLAP Queries</span></a></h2>
+<ul>
+<li><strong>AdventureWorksDW2019</strong> and <strong>AdventureWorks2019</strong> are common SQL Server sample databases.</li>
+<li>They provide a rich schema for practicing data warehousing concepts.</li>
+</ul>
+<h2 id="olap-extensions-in-sql" tabindex="-1"><a class="header-anchor" href="#olap-extensions-in-sql"><span>OLAP Extensions in SQL</span></a></h2>
+<p>OLAP extensions to SQL (introduced around SQL-99 and later refined) enable dimensional-style queries on relational data. These extensions include:</p>
+<ul>
+<li><strong>GROUP BY ROLLUP</strong></li>
+<li><strong>GROUP BY CUBE</strong></li>
+<li><strong>GROUPING and GROUPING SETS</strong></li>
+<li><strong>Window Functions</strong> (introduced in SQL:2003)</li>
+</ul>
+<p>These features help produce subtotals at various aggregation levels and allow more sophisticated reporting directly in SQL.</p>
 <hr>
-<h2 id="topics-covered" tabindex="-1"><a class="header-anchor" href="#topics-covered"><span>Topics Covered</span></a></h2>
-<ol>
-<li>SQL Extensions for OLAP Analysis:
+<h2 id="glossary" tabindex="-1"><a class="header-anchor" href="#glossary"><span>Glossary</span></a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AdventureWorksDW2019</strong></td>
+<td>A sample SQL Server data warehouse database provided by Microsoft for learning and demonstrations</td>
+</tr>
+<tr>
+<td><strong>OLAP Extensions</strong></td>
+<td>SQL language features (ROLLUP, CUBE, etc.) for multidimensional-style aggregations</td>
+</tr>
+<tr>
+<td><strong>GROUP BY</strong></td>
+<td>A SQL clause used to aggregate data by one or more columns</td>
+</tr>
+<tr>
+<td><strong>Data Warehouse</strong></td>
+<td>A central repository of integrated data from multiple sources, used primarily for analytics</td>
+</tr>
+<tr>
+<td><strong>SQL:2003 Window Functions</strong></td>
+<td>Extensions to SQL standard enabling advanced row-by-row analytics (OVER, PARTITION BY, etc.)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="using-rollup-and-cube" tabindex="-1"><a class="header-anchor" href="#using-rollup-and-cube"><span>Using ROLLUP and CUBE</span></a></h1>
+<p>Two powerful OLAP extensions in SQL are <strong>ROLLUP</strong> and <strong>CUBE</strong>, which generate multiple levels of subtotals in a single query.</p>
+<hr>
+<h2 id="group-by-and-the-need-for-subtotals" tabindex="-1"><a class="header-anchor" href="#group-by-and-the-need-for-subtotals"><span>GROUP BY and the Need for Subtotals</span></a></h2>
+<p>A basic <code v-pre>GROUP BY</code> creates groups for each distinct combination of specified attributes. However, if you need subtotals by dimension (e.g., total by year, total by product, and a grand total), you would typically write multiple queries or use UNION to combine results manually.</p>
+<hr>
+<h2 id="rollup" tabindex="-1"><a class="header-anchor" href="#rollup"><span>ROLLUP</span></a></h2>
 <ul>
-<li>GROUP BY ROLLUP</li>
-<li>GROUP BY CUBE</li>
-<li>GROUPING SETS</li>
+<li><strong>Purpose</strong>: Calculates hierarchical subtotals, from left to right, plus a grand total.</li>
+<li><strong>Syntax</strong>:<div class="language-sql line-numbers-mode" data-highlighter="prismjs" data-ext="sql" data-title="sql"><pre v-pre><code><span class="line"><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> ROLLUP <span class="token punctuation">(</span>attr1<span class="token punctuation">,</span> attr2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></span>
+<span class="line"></span>
+<span class="line">  •	Levels <span class="token keyword">of</span> Aggregation: <span class="token keyword">For</span> n attributes<span class="token punctuation">,</span> ROLLUP produces n <span class="token operator">+</span> <span class="token number">1</span> levels <span class="token keyword">of</span> subtotals<span class="token punctuation">.</span></span>
+<span class="line">  •	<span class="token boolean">NULL</span> Indicators: <span class="token operator">In</span> many <span class="token keyword">SQL</span> dialects<span class="token punctuation">,</span> a <span class="token boolean">NULL</span> <span class="token keyword">value</span> <span class="token operator">in</span> the result <span class="token keyword">set</span> can indicate a subtotal <span class="token keyword">row</span><span class="token punctuation">.</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<p>Example
+•	Rolling up Year → grand total:
+1.	Detailed level by Year
+2.	Grand total (all years)</p>
+<p>CUBE
+•	Purpose: Calculates all combinations of subtotals for the given dimensions, as well as the grand total.
+•	Syntax:</p>
+<p>GROUP BY CUBE (attr1, attr2, ...)</p>
+<pre><code>•	Crosstab-Style Aggregation: CUBE computes every possible grouping combination (subtotals along each dimension and combination of dimensions).
+•	Levels of Aggregation: For n attributes, CUBE produces (2^n) combinations plus a grand total.
+</code></pre>
+<p>Example
+•	With two attributes (Product, Year), CUBE produces:
+•	Detailed level (Product, Year)
+•	Subtotal by Product (all years)
+•	Subtotal by Year (all products)
+•	Grand total (all products, all years)</p>
+<p>Glossary</p>
+<p>Term	Definition
+ROLLUP	A SQL extension generating hierarchical subtotals from a left-to-right list of attributes
+CUBE	A SQL extension generating all possible subtotals across specified dimensions
+Subtotal	An intermediate aggregate (e.g., total sales by year, total sales by product)
+Grand Total	The final aggregate over all dimension values
+NULL as Subtotal	In ROLLUP/CUBE queries, NULL may represent aggregated rows across all values of a dimension</p>
+<hr>
+<h2 id="_3-grouping-sets-and-grouping" tabindex="-1"><a class="header-anchor" href="#_3-grouping-sets-and-grouping"><span>3. grouping_sets_and_grouping</span></a></h2>
+<h1 id="grouping-grouping-sets-and-more" tabindex="-1"><a class="header-anchor" href="#grouping-grouping-sets-and-more"><span>GROUPING, GROUPING SETS, and More</span></a></h1>
+<p>Beyond ROLLUP and CUBE, SQL includes additional clauses and functions such as <strong>GROUPING</strong> and <strong>GROUPING SETS</strong> to manage subtotals more flexibly.</p>
+<hr>
+<h2 id="grouping-function" tabindex="-1"><a class="header-anchor" href="#grouping-function"><span>GROUPING Function</span></a></h2>
+<ul>
+<li><strong>Problem</strong>: ROLLUP and CUBE use <code v-pre>NULL</code> to represent subtotal rows, which can be confusing if your data also has legitimate <code v-pre>NULL</code>s.</li>
+<li><strong>Solution</strong>: <code v-pre>GROUPING(column)</code> function distinguishes between a genuine <code v-pre>NULL</code> in the data versus a <code v-pre>NULL</code> created by ROLLUP/CUBE.
+<ul>
+<li>Returns <code v-pre>1</code> if the <code v-pre>NULL</code> value is for a subtotal row.</li>
+<li>Returns <code v-pre>0</code> if the <code v-pre>NULL</code> value is an actual data NULL.</li>
 </ul>
 </li>
-<li>Window Functions:
+</ul>
+<p><strong>Usage Example</strong></p>
+<div class="language-sql line-numbers-mode" data-highlighter="prismjs" data-ext="sql" data-title="sql"><pre v-pre><code><span class="line"><span class="token keyword">SELECT</span></span>
+<span class="line">  <span class="token keyword">CASE</span> GROUPING<span class="token punctuation">(</span>P<span class="token punctuation">.</span>ProductLine<span class="token punctuation">)</span></span>
+<span class="line">       <span class="token keyword">WHEN</span> <span class="token number">1</span> <span class="token keyword">THEN</span> <span class="token string">'All Products'</span></span>
+<span class="line">       <span class="token keyword">ELSE</span> ISNULL<span class="token punctuation">(</span>P<span class="token punctuation">.</span>ProductLine<span class="token punctuation">,</span> <span class="token string">'N/A'</span><span class="token punctuation">)</span></span>
+<span class="line">  <span class="token keyword">END</span> <span class="token keyword">AS</span> ProductCategory<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span>
+<span class="line"><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> CUBE <span class="token punctuation">(</span>P<span class="token punctuation">.</span>ProductLine<span class="token punctuation">)</span></span>
+<span class="line"></span>
+<span class="line">GROUPING SETS</span>
+<span class="line">	•	Purpose: Offers explicit control <span class="token keyword">over</span> which groups <span class="token operator">or</span> subtotals are calculated—akin <span class="token keyword">to</span> writing multiple <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> queries <span class="token operator">and</span> combining them <span class="token keyword">with</span> <span class="token keyword">UNION</span> <span class="token keyword">ALL</span><span class="token punctuation">.</span></span>
+<span class="line">	•	Syntax:</span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> GROUPING SETS <span class="token punctuation">(</span><span class="token punctuation">(</span>attr1<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>attr2<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>attr1<span class="token punctuation">,</span> attr2<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line">	•	<span class="token keyword">Use</span> <span class="token keyword">Case</span>: Custom reports needing specific combinations <span class="token keyword">of</span> dimensions without computing every possible subtotal <span class="token keyword">from</span> CUBE <span class="token operator">or</span> the hierarchical approach <span class="token keyword">of</span> ROLLUP<span class="token punctuation">.</span></span>
+<span class="line"></span>
+<span class="line">Example</span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">SELECT</span></span>
+<span class="line">  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span>
+<span class="line"><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> GROUPING SETS <span class="token punctuation">(</span></span>
+<span class="line">  <span class="token punctuation">(</span><span class="token keyword">Year</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">(</span>ProductLine<span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">(</span><span class="token keyword">Year</span><span class="token punctuation">,</span> ProductLine<span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">Glossary</span>
+<span class="line"></span>
+<span class="line">Term	Definition</span>
+<span class="line">GROUPING	A <span class="token keyword">function</span> that indicates <span class="token keyword">if</span> a <span class="token boolean">NULL</span> <span class="token operator">in</span> a subtotal <span class="token keyword">row</span> <span class="token operator">is</span> produced <span class="token keyword">by</span> ROLLUP<span class="token operator">/</span>CUBE <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">or</span> <span class="token operator">is</span> an actual <span class="token boolean">NULL</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></span>
+<span class="line">GROUPING SETS	A <span class="token keyword">SQL</span> clause that specifies exactly which <span class="token keyword">group</span> combinations <span class="token keyword">to</span> generate</span>
+<span class="line">Subtotal <span class="token keyword">Row</span>	A <span class="token keyword">row</span> representing an aggregated <span class="token keyword">value</span> across <span class="token keyword">some</span> <span class="token operator">or</span> <span class="token keyword">all</span> dimensions</span>
+<span class="line">ISNULL <span class="token operator">/</span> <span class="token keyword">COALESCE</span>	Functions that <span class="token keyword">replace</span> NULLs <span class="token keyword">with</span> a specified <span class="token keyword">value</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">---</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">## 4. window_functions_and_ranking</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h1 id="window-functions-and-ranking" tabindex="-1"><a class="header-anchor" href="#window-functions-and-ranking"><span>Window Functions and Ranking</span></a></h1>
+<p>Window functions (SQL:2003) are powerful tools that let you perform aggregations without collapsing rows, enabling per-row computations alongside group-level aggregates.</p>
+<hr>
+<h2 id="window-functions-overview" tabindex="-1"><a class="header-anchor" href="#window-functions-overview"><span>Window Functions Overview</span></a></h2>
 <ul>
-<li>Partitioning and row-level aggregations.</li>
+<li><strong>Syntax</strong>:<div class="language-sql line-numbers-mode" data-highlighter="prismjs" data-ext="sql" data-title="sql"><pre v-pre><code><span class="line"><span class="token operator">&lt;</span>aggregate_function<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">OVER</span> <span class="token punctuation">(</span></span>
+<span class="line">  <span class="token keyword">PARTITION</span> <span class="token keyword">BY</span> <span class="token operator">&lt;</span><span class="token keyword">columns</span><span class="token operator">></span> </span>
+<span class="line">  <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token operator">&lt;</span><span class="token keyword">columns</span><span class="token operator">></span></span>
+<span class="line">  <span class="token punctuation">[</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> additional clauses <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span></span>
+<span class="line"><span class="token punctuation">)</span></span>
+<span class="line"></span>
+<span class="line">  •	Behavior:</span>
+<span class="line">  •	Unlike <span class="token keyword">GROUP</span> <span class="token keyword">BY</span><span class="token punctuation">,</span> window functions <span class="token keyword">do</span> <span class="token operator">not</span> reduce <span class="token keyword">rows</span> <span class="token keyword">to</span> a single result per <span class="token keyword">group</span><span class="token punctuation">.</span> Each <span class="token keyword">row</span> keeps its <span class="token keyword">identity</span> <span class="token keyword">while</span> also displaying an aggregate <span class="token keyword">value</span> computed <span class="token keyword">over</span> a “window” <span class="token punctuation">(</span><span class="token keyword">partition</span><span class="token punctuation">)</span><span class="token punctuation">.</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<p>Example</p>
+<p>SELECT
+ProductID,
+OrderDate,
+SalesAmount,
+SUM(SalesAmount) OVER (PARTITION BY ProductID) AS TotalSalesByProduct
+FROM SalesTable;</p>
+<p>Comparing OVER PARTITION BY vs GROUP BY
+•	GROUP BY: Collapses rows into a single row per group.
+•	OVER (PARTITION BY): Each row is retained, and the aggregate is displayed for each partition.</p>
+<p>Ranking Functions
+•	RANK() and DENSE_RANK(): Compute the position of each row within a partition based on an ordering.
+•	RANK() leaves gaps in the ranking if there are ties.
+•	DENSE_RANK() does not leave gaps.</p>
+<p>Example</p>
+<p>SELECT
+ProductID,
+SalesAmount,
+RANK() OVER (ORDER BY SalesAmount DESC) AS SalesRank
+FROM SalesTable;</p>
+<p>Glossary</p>
+<p>Term	Definition
+Window Function	A function using OVER() to compute an aggregation or ranking without collapsing rows
+PARTITION BY	Defines the group (partition) of rows used by the window function
+ORDER BY	Specifies the logical ordering of rows within a partition for ranking or other calculations
+RANK()	Assigns a rank to each row, leaving gaps in case of ties
+DENSE_RANK()	Similar to RANK() but without gaps in rank values
+OVER() Clause	A clause that defines the window (partitioning and ordering) for a window function</p>
+<hr>
+<h2 id="_5-materialized-views-and-indexed-views-md" tabindex="-1"><a class="header-anchor" href="#_5-materialized-views-and-indexed-views-md"><span>5. materialized_views_and_indexed_views.md</span></a></h2>
+<h1 id="materialized-views-and-indexed-views" tabindex="-1"><a class="header-anchor" href="#materialized-views-and-indexed-views"><span>Materialized Views and Indexed Views</span></a></h1>
+<p><strong>Materialized Views</strong> are database objects that store the precomputed results of a query physically. They speed up queries by reading data directly from the materialized result rather than recalculating aggregations each time.</p>
+<hr>
+<h2 id="materialized-views" tabindex="-1"><a class="header-anchor" href="#materialized-views"><span>Materialized Views</span></a></h2>
+<ul>
+<li><strong>Concept</strong>: Similar to a virtual table (view) but physically persisted.</li>
+<li><strong>Advantages</strong>:
+<ul>
+<li>Faster response for costly aggregations.</li>
+<li>Can reduce I/O by storing frequently accessed columns.</li>
+<li>Replication: Used to replicate data in distributed environments.</li>
 </ul>
 </li>
-<li>Materialized Views:
+<li><strong>Challenges</strong>:
 <ul>
-<li>Precomputed query results for faster performance.</li>
+<li>Must be refreshed when base data changes (on commit, on schedule, or on demand).</li>
+<li>Consumes additional storage.</li>
 </ul>
 </li>
-<li>Dimensions and Hierarchies in Oracle:
+</ul>
+<p><strong>Scenarios</strong></p>
 <ul>
-<li>Defining and using dimensions.</li>
+<li><strong>High-cost Aggregates</strong>: Pre-summing large fact tables.</li>
+<li><strong>Column Subset</strong>: Storing commonly used columns.</li>
+</ul>
+<hr>
+<h2 id="indexed-views-sql-server" tabindex="-1"><a class="header-anchor" href="#indexed-views-sql-server"><span>Indexed Views (SQL Server)</span></a></h2>
+<ul>
+<li><strong>Definition</strong>: A “materialized view” in SQL Server is typically called an <strong>Indexed View</strong>.</li>
+<li><strong>Clustered Index</strong>: You create a unique clustered index on a view so the data is physically stored and maintained like a table.</li>
+<li><strong>Restrictions</strong>:
+<ul>
+<li>Must use <code v-pre>SCHEMABINDING</code>.</li>
+<li>No <code v-pre>*</code> or advanced OLAP features in the SELECT (e.g., no ROLLUP, CUBE).</li>
+<li>Must include <code v-pre>COUNT_BIG(*)</code> if aggregates are used.</li>
 </ul>
 </li>
-<li>MDX (Multidimensional Expressions):
+</ul>
+<hr>
+<h2 id="materialized-views-vs-indexes" tabindex="-1"><a class="header-anchor" href="#materialized-views-vs-indexes"><span>Materialized Views vs. Indexes</span></a></h2>
 <ul>
-<li>Writing queries for OLAP cubes.</li>
+<li><strong>Similarities</strong>:
+<ul>
+<li>Reduce query response time.</li>
+<li>Transparent to applications.</li>
+<li>Additional storage cost.</li>
+<li>Updates require maintenance.</li>
 </ul>
 </li>
+<li><strong>Differences</strong>:
+<ul>
+<li>Materialized Views can use full SELECT statements (including JOIN, GROUP BY).</li>
+<li>Indexes are on a single table or a single view structure.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="glossary-1" tabindex="-1"><a class="header-anchor" href="#glossary-1"><span>Glossary</span></a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Materialized View</strong></td>
+<td>A database object storing the results of a query, refreshed periodically or on-demand</td>
+</tr>
+<tr>
+<td><strong>Indexed View</strong></td>
+<td>SQL Server’s approach to physically storing view results (a form of materialized view)</td>
+</tr>
+<tr>
+<td><strong>SCHEMABINDING</strong></td>
+<td>A requirement in SQL Server that binds a view to its underlying schema to prevent structural changes</td>
+</tr>
+<tr>
+<td><strong>Refresh</strong></td>
+<td>The process of updating a materialized view with current data from the underlying base tables</td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>dimension_creation_in_oracle.md</li>
 </ol>
+<h1 id="dimension-creation-in-oracle" tabindex="-1"><a class="header-anchor" href="#dimension-creation-in-oracle"><span>Dimension Creation in Oracle</span></a></h1>
+<p>Oracle supports explicitly defining dimensions and hierarchies for use in query optimizations and advanced OLAP features. This process goes beyond simply creating tables and foreign keys; you declare dimension levels and relationships.</p>
 <hr>
-<h2 id="prerequisites" tabindex="-1"><a class="header-anchor" href="#prerequisites"><span>Prerequisites</span></a></h2>
+<h2 id="creating-dimensions" tabindex="-1"><a class="header-anchor" href="#creating-dimensions"><span>Creating Dimensions</span></a></h2>
+<div class="language-sql line-numbers-mode" data-highlighter="prismjs" data-ext="sql" data-title="sql"><pre v-pre><code><span class="line"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> location <span class="token punctuation">(</span></span>
+<span class="line">  city     VARCHAR2<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">  state    VARCHAR2<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">  country  VARCHAR2<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">  mayor    VARCHAR2<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">  governor VARCHAR2<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">CREATE</span> DIMENSION location_dim</span>
+<span class="line">  <span class="token keyword">LEVEL</span> city    <span class="token operator">IS</span> location<span class="token punctuation">.</span>city</span>
+<span class="line">  <span class="token keyword">LEVEL</span> state   <span class="token operator">IS</span> location<span class="token punctuation">.</span>state</span>
+<span class="line">  <span class="token keyword">LEVEL</span> country <span class="token operator">IS</span> location<span class="token punctuation">.</span>country<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	•	Levels: city<span class="token punctuation">,</span> state<span class="token punctuation">,</span> country</span>
+<span class="line">	•	Dimension: location_dim</span>
+<span class="line"></span>
+<span class="line">Creating Hierarchies</span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">To</span> represent hierarchical rollups <span class="token punctuation">(</span>e<span class="token punctuation">.</span>g<span class="token punctuation">.</span><span class="token punctuation">,</span> city → state → country<span class="token punctuation">)</span><span class="token punctuation">,</span> we <span class="token keyword">use</span> the HIERARCHY clause:</span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">CREATE</span> DIMENSION location_dim</span>
+<span class="line">  <span class="token keyword">LEVEL</span> city <span class="token operator">IS</span> location<span class="token punctuation">.</span>city</span>
+<span class="line">  <span class="token keyword">LEVEL</span> state <span class="token operator">IS</span> location<span class="token punctuation">.</span>state</span>
+<span class="line">  <span class="token keyword">LEVEL</span> country <span class="token operator">IS</span> location<span class="token punctuation">.</span>country</span>
+<span class="line">  HIERARCHY loc_rollup <span class="token punctuation">(</span></span>
+<span class="line">    city CHILD <span class="token keyword">OF</span></span>
+<span class="line">    state CHILD <span class="token keyword">OF</span></span>
+<span class="line">    country</span>
+<span class="line">  <span class="token punctuation">)</span></span>
+<span class="line">  ATTRIBUTE city DETERMINES <span class="token punctuation">(</span>location<span class="token punctuation">.</span>mayor<span class="token punctuation">)</span></span>
+<span class="line">  ATTRIBUTE state DETERMINES <span class="token punctuation">(</span>location<span class="token punctuation">.</span>governor<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">	•	Hierarchy: loc_rollup</span>
+<span class="line">	•	Attributes: Additional <span class="token keyword">fields</span> determined <span class="token keyword">by</span> each <span class="token keyword">level</span><span class="token punctuation">.</span></span>
+<span class="line"></span>
+<span class="line">Example: <span class="token keyword">Time</span> Dimension</span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">CREATE</span> DIMENSION time_dim</span>
+<span class="line">  <span class="token keyword">LEVEL</span> curDate  <span class="token operator">IS</span> <span class="token keyword">time</span><span class="token punctuation">.</span>curDate</span>
+<span class="line">  <span class="token keyword">LEVEL</span> <span class="token keyword">month</span>    <span class="token operator">IS</span> <span class="token keyword">time</span><span class="token punctuation">.</span><span class="token keyword">month</span></span>
+<span class="line">  <span class="token keyword">LEVEL</span> quarter  <span class="token operator">IS</span> <span class="token keyword">time</span><span class="token punctuation">.</span>quarter</span>
+<span class="line">  <span class="token keyword">LEVEL</span> <span class="token keyword">year</span>     <span class="token operator">IS</span> <span class="token keyword">time</span><span class="token punctuation">.</span><span class="token keyword">year</span></span>
+<span class="line">  <span class="token keyword">LEVEL</span> season   <span class="token operator">IS</span> <span class="token keyword">time</span><span class="token punctuation">.</span>season</span>
+<span class="line">  <span class="token keyword">LEVEL</span> week_num <span class="token operator">IS</span> <span class="token keyword">time</span><span class="token punctuation">.</span>week_num</span>
+<span class="line">  HIERARCHY calendar_rollup <span class="token punctuation">(</span></span>
+<span class="line">    curDate CHILD <span class="token keyword">OF</span> <span class="token keyword">month</span> CHILD <span class="token keyword">OF</span> quarter CHILD <span class="token keyword">OF</span> <span class="token keyword">year</span></span>
+<span class="line">  <span class="token punctuation">)</span></span>
+<span class="line">  HIERARCHY weekly_rollup <span class="token punctuation">(</span></span>
+<span class="line">    curDate CHILD <span class="token keyword">OF</span> week_num</span>
+<span class="line">  <span class="token punctuation">)</span></span>
+<span class="line">  HIERARCHY seasonal_rollup <span class="token punctuation">(</span></span>
+<span class="line">    curDate CHILD <span class="token keyword">OF</span> season</span>
+<span class="line">  <span class="token punctuation">)</span></span>
+<span class="line">  ATTRIBUTE curDate DETERMINES <span class="token punctuation">(</span><span class="token keyword">time</span><span class="token punctuation">.</span>dayofweek<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">Glossary</span>
+<span class="line"></span>
+<span class="line">Term	Definition</span>
+<span class="line">Oracle Dimensions	Declarative structures that define hierarchy levels <span class="token keyword">for</span> optimization <span class="token operator">and</span> OLAP <span class="token keyword">usage</span></span>
+<span class="line">Hierarchy Clause	Used <span class="token operator">in</span> <span class="token keyword">CREATE</span> DIMENSION <span class="token keyword">to</span> <span class="token keyword">describe</span> roll<span class="token operator">-</span>up paths <span class="token punctuation">(</span>e<span class="token punctuation">.</span>g<span class="token punctuation">.</span><span class="token punctuation">,</span> city → state → country<span class="token punctuation">)</span></span>
+<span class="line">CHILD <span class="token keyword">OF</span>	Defines a parent<span class="token operator">-</span>child relationship <span class="token keyword">within</span> a hierarchy</span>
+<span class="line">ATTRIBUTE … DETERMINES	Binds certain attributes <span class="token punctuation">(</span>e<span class="token punctuation">.</span>g<span class="token punctuation">.</span><span class="token punctuation">,</span> mayor<span class="token punctuation">,</span> governor<span class="token punctuation">)</span> <span class="token keyword">to</span> a <span class="token keyword">level</span><span class="token punctuation">,</span> indicating functional dependency</span>
+<span class="line"></span>
+<span class="line"><span class="token comment">---</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">## 7. introduction_mdx.md</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h1 id="introduction-to-mdx" tabindex="-1"><a class="header-anchor" href="#introduction-to-mdx"><span>Introduction to MDX</span></a></h1>
+<p><strong>MDX (Multidimensional Expressions)</strong> is a query language for OLAP databases, originally proposed by Microsoft (1997). It is part of the XML for Analysis (XMLA) specification and is commonly used to query cubes directly.</p>
+<hr>
+<h2 id="mdx-vs-sql-olap-extensions" tabindex="-1"><a class="header-anchor" href="#mdx-vs-sql-olap-extensions"><span>MDX vs. SQL OLAP Extensions</span></a></h2>
 <ul>
-<li>Familiarity with SQL syntax.</li>
-<li>Access to sample databases like <strong>AdventureWorksDW2019</strong>.</li>
+<li><strong>SQL OLAP Extensions</strong>: ROLLUP, CUBE, GROUPING, etc., operate on relational tables and columns.</li>
+<li><strong>MDX</strong>: Operates on <strong>cubes</strong> and <strong>dimensions</strong> with hierarchies, returning multidimensional cell sets.</li>
 </ul>
-<p>For setup instructions, refer to the <a href="https://ualmtorres.github.io/Asignatura-Almacenes-De-Datos/Docs/Labs/00-ConfiguracionEntorno/index.html" target="_blank" rel="noopener noreferrer">environment setup guide</a>.</p>
-</div></template>
+<hr>
+<h2 id="basic-mdx-concepts" tabindex="-1"><a class="header-anchor" href="#basic-mdx-concepts"><span>Basic MDX Concepts</span></a></h2>
+<ul>
+<li><strong>Members</strong>: Individual elements of a dimension (e.g., a specific month, a particular product).</li>
+<li><strong>Measures</strong>: Numeric data that forms the “fact” or metric (e.g., Sales Amount).</li>
+<li><strong>Dimensions &amp; Hierarchies</strong>: Each dimension can have one or more hierarchies; the top level is typically <code v-pre>All</code>.</li>
+</ul>
+<p><strong>Notation</strong>:</p>
+<div class="language-mdx line-numbers-mode" data-highlighter="prismjs" data-ext="mdx" data-title="mdx"><pre v-pre><code><span class="line">[Dimension].[Hierarchy].[Level].[Member]</span>
+<span class="line"></span>
+<span class="line">A Minimal Example</span>
+<span class="line"></span>
+<span class="line">SELECT </span>
+<span class="line">  [Time].[Calendar].[Calendar Year].Members ON ROWS,</span>
+<span class="line">  [Measures].[Sales Amount] ON COLUMNS</span>
+<span class="line">FROM [Adventure Works DW2019]</span>
+<span class="line"></span>
+<span class="line">	•	ROWS: [Calendar Year].Members from the [Time] dimension’s calendar hierarchy.</span>
+<span class="line">	•	COLUMNS: The [Sales Amount] measure.</span>
+<span class="line"></span>
+<span class="line">Glossary</span>
+<span class="line"></span>
+<span class="line">Term	Definition</span>
+<span class="line">MDX	Multidimensional Expressions, a language to query OLAP cubes</span>
+<span class="line">Cube	A multidimensional data structure storing measures across various dimensions</span>
+<span class="line">Member	A specific element of a dimension or hierarchy</span>
+<span class="line">Measure	A numeric value stored in the cube, typically representing a fact (e.g., sales, cost)</span>
+<span class="line">Hierarchy (MDX)	An ordered set of levels within a dimension (e.g., Year → Quarter → Month)</span>
+<span class="line">XMLA	XML for Analysis, a standard allowing cross-platform communication with OLAP data sources</span>
+<span class="line"></span>
+<span class="line">---</span>
+<span class="line"></span>
+<span class="line">## 8. mdx_advanced_topics.md</span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h1 id="advanced-mdx-operations-and-calculations" tabindex="-1"><a class="header-anchor" href="#advanced-mdx-operations-and-calculations"><span>Advanced MDX: Operations and Calculations</span></a></h1>
+<p>MDX allows slicing, dicing, and more advanced manipulations of multidimensional data. Below are key concepts often used in sophisticated OLAP applications.</p>
+<hr>
+<h2 id="tuples-and-sets" tabindex="-1"><a class="header-anchor" href="#tuples-and-sets"><span>Tuples and Sets</span></a></h2>
+<ul>
+<li><strong>Tuple</strong>: A coordinate in the cube, represented as <code v-pre>( [Dimension1].[Member], [Dimension2].[Member], ... )</code>.</li>
+<li><strong>Set</strong>: A collection (enclosed in <code v-pre>{}</code>) of members or tuples.</li>
+</ul>
+<p><strong>Example</strong></p>
+<div class="language-mdx line-numbers-mode" data-highlighter="prismjs" data-ext="mdx" data-title="mdx"><pre v-pre><code><span class="line">{</span>
+<span class="line">  ([Customer].[Gender].[M], [Date].[Year].[2023]),</span>
+<span class="line">  ([Customer].[Gender].[F], [Date].[Year].[2023])</span>
+<span class="line">}</span>
+<span class="line"></span>
+<span class="line">CrossJoin</span>
+<span class="line">	•	Purpose: Combines every member of one set with every member of another.</span>
+<span class="line">	•	Syntax:</span>
+<span class="line"></span>
+<span class="line">CROSSJOIN(Set1, Set2)</span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line">	•	Equivalent Operator: * can sometimes replace CROSSJOIN.</span>
+<span class="line"></span>
+<span class="line">SELECT </span>
+<span class="line">  CROSSJOIN(</span>
+<span class="line">    [Product].[Category].Members, </span>
+<span class="line">    [Measures].[Sales Amount]</span>
+<span class="line">  ) ON COLUMNS,</span>
+<span class="line">  [Date].[Calendar Year].Members ON ROWS</span>
+<span class="line">FROM [Adventure Works DW2019]</span>
+<span class="line"></span>
+<span class="line">Filtering and Ordering</span>
+<span class="line">	•	FILTER: Used to exclude tuples or members not meeting a condition.</span>
+<span class="line"></span>
+<span class="line">FILTER(Set, ConditionExpression)</span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line">	•	ORDER: Sorts a set based on a numeric or string expression.</span>
+<span class="line"></span>
+<span class="line">ORDER(Set, Expression, [ASC|DESC|BASC|BDESC])</span>
+<span class="line"></span>
+<span class="line">TopCount and BottomCount</span>
+<span class="line">	•	TOPCOUNT(Set, n, [NumericExpression]): Returns the top n elements of a set based on a measure or expression.</span>
+<span class="line">	•	BOTTOMCOUNT(Set, n, [NumericExpression]): Returns the bottom n elements of a set.</span>
+<span class="line"></span>
+<span class="line">Calculated Members</span>
+<span class="line">	•	Definition: Creates new “virtual” members that are not part of the original dimension or measure group.</span>
+<span class="line">	•	Usage:</span>
+<span class="line"></span>
+<span class="line">WITH MEMBER [Product].[Category].[AccessoriesPlusComponents] AS</span>
+<span class="line">  [Product].[Category].[Accessories] + [Product].[Category].[Components]</span>
+<span class="line">SELECT ...</span>
+<span class="line"></span>
+<span class="line">Glossary</span>
+<span class="line"></span>
+<span class="line">Term	Definition</span>
+<span class="line">Tuple	A coordinate specifying a single cell in a cube (e.g., Year=2023, Gender=M)</span>
+<span class="line">Set	A collection of members or tuples in MDX, denoted by { ... }</span>
+<span class="line">CROSSJOIN	A function (or operator *) that returns the Cartesian product of two sets</span>
+<span class="line">FILTER (MDX)	Filters a set based on a Boolean condition</span>
+<span class="line">ORDER (MDX)	Sorts a set based on a numeric or string expression</span>
+<span class="line">TopCount / BottomCount	MDX functions to pick the top or bottom N elements in a set based on a measure</span>
+<span class="line">Calculated Member	A new member defined in MDX, often based on an expression over existing measures or members</span>
+<span class="line"></span>
+<span class="line">---</span>
+<span class="line"></span>
+<span class="line">### How to Use These Files</span>
+<span class="line"></span>
+<span class="line">1. **Save Each File**  </span>
+<span class="line">   As separate `.md` files, for example:</span>
+<span class="line">   - `1_introduction_and_overview.md`</span>
+<span class="line">   - `2_rollup_and_cube.md`</span>
+<span class="line">   - `3_grouping_sets_and_grouping.md`</span>
+<span class="line">   - `4_window_functions_and_ranking.md`</span>
+<span class="line">   - `5_materialized_views_and_indexed_views.md`</span>
+<span class="line">   - `6_dimension_creation_in_oracle.md`</span>
+<span class="line">   - `7_introduction_mdx.md`</span>
+<span class="line">   - `8_mdx_advanced_topics.md`</span>
+<span class="line"></span>
+<span class="line">2. **Adjust Links and Images**  </span>
+<span class="line">   If you have diagrams or want to embed references, adapt the `![Alt Text](URL)` syntax as needed.</span>
+<span class="line"></span>
+<span class="line">3. **Extend or Modify**  </span>
+<span class="line">   - Add more details or examples relevant to your specific environment (Oracle, SQL Server, etc.).  </span>
+<span class="line">   - Include additional case studies or queries for hands-on practice.</span>
+<span class="line"></span>
+<span class="line">4. **Maintain the Glossaries**  </span>
+<span class="line">   Each file ends with a glossary table for quick reference of technical terms introduced.</span>
+<span class="line"></span>
+<span class="line">By following this structure, you have a well-organized set of documents for **Theme 4**—covering advanced SQL OLAP queries, window functions, materialized views, dimension creation in Oracle, and MDX.</span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

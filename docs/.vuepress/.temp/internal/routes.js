@@ -22,25 +22,8 @@ export const routes = Object.fromEntries([
   ["/theme3/kimball_method.html", { loader: () => import(/* webpackChunkName: "theme3_kimball_method.html" */"/Users/malcommorel/Documents/sources/almacenesdedatos/docs/.vuepress/.temp/pages/theme3/kimball_method.html.js"), meta: {"title":"Kimball's 4-Step Methodology"} }],
   ["/theme3/scd_types.html", { loader: () => import(/* webpackChunkName: "theme3_scd_types.html" */"/Users/malcommorel/Documents/sources/almacenesdedatos/docs/.vuepress/.temp/pages/theme3/scd_types.html.js"), meta: {"title":"Slowly Changing Dimensions (SCDs)"} }],
   ["/theme3/special_cases.html", { loader: () => import(/* webpackChunkName: "theme3_special_cases.html" */"/Users/malcommorel/Documents/sources/almacenesdedatos/docs/.vuepress/.temp/pages/theme3/special_cases.html.js"), meta: {"title":"Special Cases in Dimensional Modeling"} }],
-  ["/theme4/page1_overview.html", { loader: () => import(/* webpackChunkName: "theme4_page1_overview.html" */"/Users/malcommorel/Documents/sources/almacenesdedatos/docs/.vuepress/.temp/pages/theme4/page1_overview.html.js"), meta: {"title":"Overview of Theme 4: Queries in Data Warehousing"} }],
+  ["/theme4/page1_overview.html", { loader: () => import(/* webpackChunkName: "theme4_page1_overview.html" */"/Users/malcommorel/Documents/sources/almacenesdedatos/docs/.vuepress/.temp/pages/theme4/page1_overview.html.js"), meta: {"title":"Introduction and Overview"} }],
   ["/theme4/page2_adventureworks_setup.html", { loader: () => import(/* webpackChunkName: "theme4_page2_adventureworks_setup.html" */"/Users/malcommorel/Documents/sources/almacenesdedatos/docs/.vuepress/.temp/pages/theme4/page2_adventureworks_setup.html.js"), meta: {"title":"Setting Up AdventureWorks Databases"} }],
   ["/theme4/page3_olap_sql_extensions.html", { loader: () => import(/* webpackChunkName: "theme4_page3_olap_sql_extensions.html" */"/Users/malcommorel/Documents/sources/almacenesdedatos/docs/.vuepress/.temp/pages/theme4/page3_olap_sql_extensions.html.js"), meta: {"title":""} }],
   ["/404.html", { loader: () => import(/* webpackChunkName: "404.html" */"/Users/malcommorel/Documents/sources/almacenesdedatos/docs/.vuepress/.temp/pages/404.html.js"), meta: {"title":""} }],
 ]);
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateRoutes) {
-    __VUE_HMR_RUNTIME__.updateRoutes(routes)
-  }
-  if (__VUE_HMR_RUNTIME__.updateRedirects) {
-    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ routes, redirects }) => {
-    __VUE_HMR_RUNTIME__.updateRoutes(routes)
-    __VUE_HMR_RUNTIME__.updateRedirects(redirects)
-  })
-}
