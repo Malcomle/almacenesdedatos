@@ -1,0 +1,91 @@
+<template><div><h1 id="data-warehousing-concepts" tabindex="-1"><a class="header-anchor" href="#data-warehousing-concepts"><span>Data Warehousing Concepts</span></a></h1>
+<p>Data Warehousing is a process that involves collecting, consolidating, cleaning, and storing data from multiple sources to facilitate analysis and strategic decision-making. It provides organizations with a centralized way to leverage large volumes of historical and current data.</p>
+<hr>
+<h2 id="objectives-of-a-data-warehouse" tabindex="-1"><a class="header-anchor" href="#objectives-of-a-data-warehouse"><span>Objectives of a Data Warehouse</span></a></h2>
+<ol>
+<li>
+<p><strong>Unified Data Access</strong></p>
+<ul>
+<li>Eliminates heterogeneity among different data sources (ERP, operational databases, CRM, spreadsheets, etc.).</li>
+<li>Provides a single source of truth for consistent reporting.</li>
+</ul>
+</li>
+<li>
+<p><strong>Consistency</strong></p>
+<ul>
+<li>Stores cleaned and coherent data.</li>
+<li>Ensures reliable analysis by preventing duplication or discrepancies in data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Historical Analysis</strong></p>
+<ul>
+<li>Preserves data over extended periods, allowing trend and historical comparisons.</li>
+<li>Facilitates the creation of comparative reports (year-over-year, month-over-month, etc.).</li>
+</ul>
+</li>
+<li>
+<p><strong>Actionable Insights</strong></p>
+<ul>
+<li>Equips decision-makers with tools and reports for effective decision-making.</li>
+<li>Supports Business Intelligence (BI) processes by identifying trends and improvement opportunities.</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://example.com/data_warehouse_objectives.png" alt="Data Warehouse Objectives"></p>
+<hr>
+<h2 id="strengths-and-limitations" tabindex="-1"><a class="header-anchor" href="#strengths-and-limitations"><span>Strengths and Limitations</span></a></h2>
+<h3 id="strengths" tabindex="-1"><a class="header-anchor" href="#strengths"><span>Strengths</span></a></h3>
+<ul>
+<li><strong>Centralized Data Repository</strong><br>
+Gathers all data sources in a single location, simplifying data management and governance.</li>
+<li><strong>Historical Trend Analysis</strong><br>
+Offers the possibility to detect historical patterns, anticipate future trends, and perform comparative analyses.</li>
+<li><strong>Multidimensional Queries</strong><br>
+Allows users to query data from various perspectives (e.g., product, region, time) due to the warehouse’s underlying structure.</li>
+</ul>
+<h3 id="limitations" tabindex="-1"><a class="header-anchor" href="#limitations"><span>Limitations</span></a></h3>
+<ul>
+<li><strong>High Setup Cost</strong><br>
+Implementing a data warehouse requires significant investment (software licensing, infrastructure, internal skills).</li>
+<li><strong>Complex Integration Processes</strong><br>
+Integrating heterogeneous data can be complex (format, quality, frequency, volume), necessitating robust ETL/ELT processes.</li>
+</ul>
+<hr>
+<h2 id="why-data-warehousing-is-critical" tabindex="-1"><a class="header-anchor" href="#why-data-warehousing-is-critical"><span>Why Data Warehousing Is Critical</span></a></h2>
+<ul>
+<li><strong>Better Decision-Making</strong>: Executives can quickly access reliable and actionable insights.</li>
+<li><strong>Improved Data Quality</strong>: Data cleaning and normalization enhance overall data quality in the analytical environment.</li>
+<li><strong>Flexibility and Scalability</strong>: Data warehouses can grow with the organization and handle increasing data volumes.</li>
+</ul>
+<hr>
+<h2 id="glossary" tabindex="-1"><a class="header-anchor" href="#glossary"><span>Glossary</span></a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Warehouse</strong></td>
+<td>A centralized repository designed to store integrated, historical data from multiple sources</td>
+</tr>
+<tr>
+<td><strong>Business Intelligence (BI)</strong></td>
+<td>The set of strategies and tools used to analyze business information for better decision-making</td>
+</tr>
+<tr>
+<td><strong>ETL (Extract, Transform, Load)</strong></td>
+<td>A process that moves data from different sources into a Data Warehouse, ensuring cleanliness and consistency</td>
+</tr>
+<tr>
+<td><strong>Single Source of Truth</strong></td>
+<td>A concept whereby data is aggregated in one place to avoid inconsistencies between multiple data sources</td>
+</tr>
+</tbody>
+</table>
+</div></template>
+
+
