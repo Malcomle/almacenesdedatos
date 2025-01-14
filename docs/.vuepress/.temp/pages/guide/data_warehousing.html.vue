@@ -32,7 +32,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="https://example.com/data_warehouse_objectives.png" alt="Data Warehouse Objectives"></p>
+<p><img src="https://www.researchgate.net/publication/352178478/figure/fig4/AS:1031933433749504@1623043511030/Fig-17-Objectives-of-data-warehouse-Characteristics-The-key-characteristics-of-a-data.jpg" alt="Data Warehouse Objectives"></p>
 <hr>
 <h2 id="strengths-and-limitations" tabindex="-1"><a class="header-anchor" href="#strengths-and-limitations"><span>Strengths and Limitations</span></a></h2>
 <h3 id="strengths" tabindex="-1"><a class="header-anchor" href="#strengths"><span>Strengths</span></a></h3>

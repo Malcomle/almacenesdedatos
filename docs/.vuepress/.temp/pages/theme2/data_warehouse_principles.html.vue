@@ -9,6 +9,7 @@
 <li><strong>Time-Variant</strong>: Contains a historical record of data changes over time, enabling trend and variance analyses.</li>
 </ul>
 <hr>
+<p><img src="https://files.codingninjas.in/article_images/inmon-approach-in-data-warehouse-designing-0-1653158095.webp" alt="Inmon's Data Warehouse"></p>
 <h2 id="kimball-s-approach" tabindex="-1"><a class="header-anchor" href="#kimball-s-approach"><span>Kimball's Approach</span></a></h2>
 <ul>
 <li><strong>Bottom-Up Development</strong>: Emphasizes building small, department-focused Data Marts first and then integrating them.</li>
@@ -21,6 +22,7 @@
 </li>
 </ul>
 <hr>
+<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/20200717001130/Kimball.png" alt="Inmon's Data Warehouse"></p>
 <h2 id="choosing-the-right-approach" tabindex="-1"><a class="header-anchor" href="#choosing-the-right-approach"><span>Choosing the Right Approach</span></a></h2>
 <ul>
 <li><strong>Enterprise Complexity</strong>: Large, complex organizations often require the enterprise-wide consistency of Inmon’s approach.</li>

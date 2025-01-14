@@ -44,18 +44,6 @@
 <li><RouteLink to="/guide/case_studies.html">Case Studies in Dimensional Design</RouteLink></li>
 </ul>
 <hr>
-<h1 id="theme-4-queries-in-data-warehousing" tabindex="-1"><a class="header-anchor" href="#theme-4-queries-in-data-warehousing"><span>Theme 4: Queries in Data Warehousing</span></a></h1>
-<p>This theme focuses on advanced SQL and MDX queries, covering OLAP extensions, grouping sets, window functions, materialized views, and hierarchies in Oracle.</p>
-<h2 id="table-of-contents" tabindex="-1"><a class="header-anchor" href="#table-of-contents"><span>Table of Contents</span></a></h2>
-<ul>
-<li><RouteLink to="/theme4/olap_sql_extensions.html">OLAP Extensions in SQL</RouteLink></li>
-<li><RouteLink to="/theme4/grouping_sets.html">GROUPING SETS and Extensions</RouteLink></li>
-<li><RouteLink to="/theme4/window_functions.html">Window Functions</RouteLink></li>
-<li><RouteLink to="/theme4/materialized_views.html">Materialized Views</RouteLink></li>
-<li><RouteLink to="/theme4/oracle_dimensions_hierarchies.html">Oracle Dimensions and Hierarchies</RouteLink></li>
-<li><RouteLink to="/theme4/mdx_queries.html">MDX Queries</RouteLink></li>
-</ul>
-<p>This guide is comprehensive, practical, and illustrated with real-world examples and diagrams.</p>
 </div></template>
 
 

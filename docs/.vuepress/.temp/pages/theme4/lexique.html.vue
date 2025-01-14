@@ -1,0 +1,344 @@
+<template><div><table>
+<thead>
+<tr>
+<th><strong>Subject</strong></th>
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Big Data</strong></td>
+<td>Extremely large datasets characterized by high volume, velocity, and variety, often requiring specialized tools (e.g., Hadoop, Spark) to process and analyze.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Bus Architecture</strong></td>
+<td>A framework (popularized by Kimball) to create conformed dimensions and fact tables across multiple data marts in a scalable, incremental manner.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Data Governance</strong></td>
+<td>The management of data integrity, quality, security, and overall availability within an organization, including roles, policies, and processes.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Data Lake</strong></td>
+<td>A storage system that holds raw or minimally processed data from varied sources (structured, unstructured, semi-structured) for future processing or analysis.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Data Mart</strong></td>
+<td>A smaller, subject-specific subset of a data warehouse, often focusing on a single business process (e.g., sales, finance) for targeted analytics.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Data Mining</strong></td>
+<td>The practice of discovering patterns, correlations, or trends in large datasets using statistical or machine learning techniques.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Data Warehouse (DW)</strong></td>
+<td>A centralized repository of integrated, historical data from multiple sources, designed primarily for analysis and decision support (not daily operations).</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Hub-and-Spoke</strong></td>
+<td>A data warehouse architecture featuring one central “hub” (enterprise data warehouse) with multiple specialized “spoke” data marts.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Inmon’s Approach</strong></td>
+<td>A top-down method of building an enterprise-wide, normalized data warehouse first, which then feeds departmental data marts as needed.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Kimball’s Approach</strong></td>
+<td>A bottom-up method that builds small, department-focused data marts (using dimensional models) and then integrates them enterprise-wide via conformed dimensions.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Lakehouse</strong></td>
+<td>A modern architecture blending a data lake (for raw data) with a data warehouse (for structured analytics), allowing unified data storage and processing.</td>
+</tr>
+<tr>
+<td><strong>Data Warehousing</strong></td>
+<td><strong>Single Source of Truth</strong></td>
+<td>The practice of consolidating data into one authoritative repository to avoid inconsistencies across multiple databases.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Additive Fact</strong></td>
+<td>A numeric measure that can be summed across all dimensions (e.g., total sales).</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Conformed Dimension</strong></td>
+<td>A dimension defined and used identically across multiple fact tables or data marts, enabling consistent cross-functional analysis.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Degenerate Dimension</strong></td>
+<td>A dimension that exists logically but has no separate table (only an identifier in the fact table, e.g., an order number).</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Dimension</strong></td>
+<td>A descriptive axis of analysis (e.g., Time, Product) providing context for numeric facts.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Dimensional Modeling</strong></td>
+<td>A technique organizing data into “facts” (quantitative measures) and “dimensions” (descriptive attributes) for easy analytical queries.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Fact</strong></td>
+<td>A measurable, quantitative piece of data (e.g., sales amount, click count), usually stored in a fact table.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Fact Table</strong></td>
+<td>A central table holding numeric facts (metrics) linked to dimensions by foreign keys.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Factless Fact Table</strong></td>
+<td>A fact table without numeric measures, used to record events or conditions (e.g., attendance, product promotions).</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Granularity</strong></td>
+<td>The level of detail at which facts are recorded (e.g., daily, monthly, per transaction).</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Hierarchy</strong></td>
+<td>A logical arrangement of dimension levels (e.g., Year → Quarter → Month → Day), supporting roll-up and drill-down.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Measure</strong></td>
+<td>A numeric value (fact) used for aggregation or analysis (e.g., revenue, quantity).</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Minidimension</strong></td>
+<td>A smaller dimension handling frequently changing attributes, reducing update load on the main dimension.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Non-Additive Fact</strong></td>
+<td>A metric that cannot be summed meaningfully across all dimensions (e.g., ratios, percentages).</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Outrigger Dimension</strong></td>
+<td>A secondary dimension table linked to a main dimension, handling specialized or recursive attributes without bloating the main dimension.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Semi-Additive Fact</strong></td>
+<td>A measure that can be summed across some dimensions but not all (e.g., inventory levels can’t be summed over time).</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Slowly Changing Dimension (SCD)</strong></td>
+<td>A dimension where attribute values change slowly over time, requiring special handling (e.g., Type 1 overwrite, Type 2 history).</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Surrogate Key</strong></td>
+<td>A synthetic, usually numeric key used to uniquely identify dimension rows, decoupling them from operational primary keys.</td>
+</tr>
+<tr>
+<td><strong>Dimensional Modeling</strong></td>
+<td><strong>Type 2 SCD</strong></td>
+<td>A method of preserving full history by creating new dimension rows for changes rather than overwriting existing ones.</td>
+</tr>
+<tr>
+<td><strong>OLTP &amp; OLAP</strong></td>
+<td><strong>Dice</strong> (OLAP Operation)</td>
+<td>Filtering multiple dimensions in a cube to form a sub-cube (e.g., Product=Electronics, Region=Europe, Year=2023).</td>
+</tr>
+<tr>
+<td><strong>OLTP &amp; OLAP</strong></td>
+<td><strong>Drill-Down</strong> (OLAP Operation)</td>
+<td>Navigating from high-level summaries to more detailed data (e.g., from monthly sales to daily sales).</td>
+</tr>
+<tr>
+<td><strong>OLTP &amp; OLAP</strong></td>
+<td><strong>OLAP (Online Analytical Processing)</strong></td>
+<td>Systems and techniques for fast, complex analytical queries on large datasets, typically using multidimensional structures (cubes).</td>
+</tr>
+<tr>
+<td><strong>OLTP &amp; OLAP</strong></td>
+<td><strong>OLTP (Online Transaction Processing)</strong></td>
+<td>Systems optimized for day-to-day transactional operations (e.g., order entry, banking).</td>
+</tr>
+<tr>
+<td><strong>OLTP &amp; OLAP</strong></td>
+<td><strong>Pivot</strong> (OLAP Operation)</td>
+<td>Rotating or reorienting a data axis in reports or cubes, swapping rows and columns to view data from different angles.</td>
+</tr>
+<tr>
+<td><strong>OLTP &amp; OLAP</strong></td>
+<td><strong>Roll-Up</strong> (OLAP Operation)</td>
+<td>Aggregating or summarizing data to a higher level in a hierarchy (e.g., from daily to monthly totals).</td>
+</tr>
+<tr>
+<td><strong>OLTP &amp; OLAP</strong></td>
+<td><strong>Slice</strong> (OLAP Operation)</td>
+<td>Restricting the cube to a single dimension or range of values (e.g., sales in 2023).</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>DENSE_RANK()</strong></td>
+<td>A window function that assigns rank order without gaps in the ranking sequence for ties.</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>GROUP BY CUBE</strong></td>
+<td>An extension that produces all combinations of subtotals for specified columns (dimensions), plus the grand total.</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>GROUP BY ROLLUP</strong></td>
+<td>An extension that generates hierarchical subtotals from left to right, plus a grand total.</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>GROUPING()</strong></td>
+<td>A function indicating if a NULL in a subtotal row is due to aggregation (returns 1) or a genuine NULL in the data (returns 0).</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>GROUPING SETS</strong></td>
+<td>A clause for explicitly listing the group combinations/subtotals to calculate, offering more control than ROLLUP/CUBE.</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>OVER() Clause</strong></td>
+<td>Used in window functions to define partitioning (PARTITION BY) and ordering (ORDER BY) for row-by-row analytical calculations without collapsing rows.</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>PARTITION BY</strong></td>
+<td>A subclause of OVER() defining how a result set is divided into partitions (groups) for window functions.</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>RANK()</strong></td>
+<td>A window function assigning rank order to rows within a partition, leaving numeric gaps in the ranking if ties occur.</td>
+</tr>
+<tr>
+<td><strong>SQL OLAP Extensions</strong></td>
+<td><strong>Window Function</strong></td>
+<td>A function (e.g., SUM, RANK) that operates over a partition of rows and returns aggregated or ranked results for each row, without grouping them.</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>BottomCount()</strong></td>
+<td>An MDX function returning the bottom N tuples/members of a set based on a numeric expression (e.g., lowest sales).</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>Calculated Member</strong></td>
+<td>A virtual member created by combining or manipulating existing data, often placed in the WITH clause of an MDX query.</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>CrossJoin()</strong></td>
+<td>Creates the Cartesian product of two sets, returning all possible combinations of members from each set.</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>Cube</strong> (MDX)</td>
+<td>A multidimensional data structure in OLAP, storing measures across multiple dimensions and hierarchies.</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>Filter()</strong> (MDX)</td>
+<td>Excludes members/tuples in a set that do not meet a specified Boolean condition (e.g., [Measures].[Sales] &gt; 10000).</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>MDX (Multidimensional Expressions)</strong></td>
+<td>A language designed for querying and manipulating OLAP cubes, operating on dimensions, hierarchies, measures, sets, and tuples.</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>Measure</strong> (Cube Context)</td>
+<td>A numeric fact stored in a cube, typically aggregated (e.g., Sales Amount).</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>Order()</strong> (MDX)</td>
+<td>Sorts a set of members/tuples by a numeric or string expression, in ascending or descending order.</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>Set</strong></td>
+<td>A collection of members or tuples in MDX, often enclosed in curly braces <code v-pre>{ }</code>.</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>TopCount()</strong></td>
+<td>Returns the top N tuples/members in a set based on a numeric expression (e.g., highest sales).</td>
+</tr>
+<tr>
+<td><strong>MDX</strong></td>
+<td><strong>Tuple</strong></td>
+<td>A coordinate in a cube (e.g., <code v-pre>([Time].[2023], [Product].[Electronics], [Measures].[Sales])</code>) representing a combination of dimension members.</td>
+</tr>
+<tr>
+<td><strong>Indexes &amp; Performance</strong></td>
+<td><strong>Bitmap Index</strong></td>
+<td>Uses bit arrays for columns with low cardinality, allowing fast logical operations (AND, OR, NOT) in queries.</td>
+</tr>
+<tr>
+<td><strong>Indexes &amp; Performance</strong></td>
+<td><strong>Indexed View</strong></td>
+<td>SQL Server’s version of a materialized view; physically storing the view results with a clustered index for faster access.</td>
+</tr>
+<tr>
+<td><strong>Indexes &amp; Performance</strong></td>
+<td><strong>Materialized View</strong></td>
+<td>A database object that physically stores precomputed query results to improve performance; must be refreshed when data changes.</td>
+</tr>
+<tr>
+<td><strong>Indexes &amp; Performance</strong></td>
+<td><strong>Refresh</strong></td>
+<td>The process of updating a materialized or indexed view with changes from the underlying base tables (on schedule or on demand).</td>
+</tr>
+<tr>
+<td><strong>Indexes &amp; Performance</strong></td>
+<td><strong>SCHEMABINDING</strong></td>
+<td>In SQL Server, a requirement for indexed views that binds the view to its underlying schema, preventing certain schema changes that could break the view.</td>
+</tr>
+<tr>
+<td><strong>Business &amp; Misc.</strong></td>
+<td><strong>Actionable Insights</strong></td>
+<td>Meaningful findings from data analysis that directly inform decisions or actions.</td>
+</tr>
+<tr>
+<td><strong>Business &amp; Misc.</strong></td>
+<td><strong>CRM</strong> (Customer Relationship Management)</td>
+<td>Strategies and systems for managing interactions with current and potential customers, often analyzing behavior to improve sales and retention.</td>
+</tr>
+<tr>
+<td><strong>Business &amp; Misc.</strong></td>
+<td><strong>KPI (Key Performance Indicator)</strong></td>
+<td>A measurable value that shows how effectively an organization is achieving its key objectives (e.g., profit margin, retention rate).</td>
+</tr>
+<tr>
+<td><strong>Case Studies &amp; Examples</strong></td>
+<td><strong>Flight Segment</strong></td>
+<td>A portion of an airline journey between two airports, often recorded with attributes like fare, distance, load factor for analysis.</td>
+</tr>
+</tbody>
+</table>
+</div></template>
+
+

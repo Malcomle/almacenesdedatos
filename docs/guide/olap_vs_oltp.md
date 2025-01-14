@@ -43,7 +43,7 @@ OLAP (Online Analytical Processing) and OLTP (Online Transaction Processing) add
   - Not built for frequent, simultaneous data updates.  
   - May require specialized infrastructures or tools (OLAP software, dedicated servers, etc.).
 
-![OLTP vs. OLAP](https://example.com/oltp_vs_olap.png)
+![OLTP vs. OLAP](https://www.guru99.com/images/1/022218_0431_OLTPvsOLAPW1.png)
 
 ---
 

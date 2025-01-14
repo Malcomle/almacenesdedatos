@@ -23,7 +23,7 @@ The art of consolidating disparate data (operational, external, historical) to e
 </ul>
 </li>
 </ol>
-<p><img src="https://example.com/data_warehousing_overview.png" alt="Data Warehousing Overview"></p>
+<p><img src="https://blog.bismart.com/hubfs/La arquitectura y funcionamiento de un data warehouse.jpg" alt="Data Warehousing Overview"></p>
 <hr>
 <h2 id="role-of-etl-extract-transform-load" tabindex="-1"><a class="header-anchor" href="#role-of-etl-extract-transform-load"><span>Role of ETL (Extract, Transform, Load)</span></a></h2>
 <ul>

@@ -13,6 +13,7 @@
 <li><strong>Fast Query Performance</strong>: Minimal joins enhance performance in high-volume data scenarios.</li>
 </ol>
 <hr>
+<p><img src="https://media.geeksforgeeks.org/wp-content/uploads/Untitled-drawing-3-2.png" alt="star"></p>
 <h2 id="snowflake-schema" tabindex="-1"><a class="header-anchor" href="#snowflake-schema"><span>Snowflake Schema</span></a></h2>
 <ul>
 <li><strong>Definition</strong>: A variant of the star schema in which dimension tables are normalized into multiple related tables.</li>
@@ -25,6 +26,7 @@
 <li><strong>Suitable for Complex Datasets</strong>: More flexible with highly detailed dimension attributes.</li>
 </ol>
 <hr>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Snowflake-schema.png/1200px-Snowflake-schema.png" alt="snowlfake"></p>
 <h2 id="choosing-a-schema" tabindex="-1"><a class="header-anchor" href="#choosing-a-schema"><span>Choosing a Schema</span></a></h2>
 <ul>
 <li><strong>Star Schema</strong>: Ideal when query speed and simplicity are top priorities.</li>

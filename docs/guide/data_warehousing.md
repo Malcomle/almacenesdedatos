@@ -22,7 +22,7 @@ Data Warehousing is a process that involves collecting, consolidating, cleaning,
    - Equips decision-makers with tools and reports for effective decision-making.  
    - Supports Business Intelligence (BI) processes by identifying trends and improvement opportunities.
 
-![Data Warehouse Objectives](https://example.com/data_warehouse_objectives.png)
+![Data Warehouse Objectives](https://www.researchgate.net/publication/352178478/figure/fig4/AS:1031933433749504@1623043511030/Fig-17-Objectives-of-data-warehouse-Characteristics-The-key-characteristics-of-a-data.jpg)
 
 ---
 

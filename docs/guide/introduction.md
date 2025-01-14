@@ -18,7 +18,7 @@ Data Warehousing is a set of principles and techniques used to build storage sys
    - Heterogeneous sources (APIs, logs, sensors, various databases).  
    - Need for powerful reporting and visualization tools (BI suites, dashboards, etc.).
 
-![Data Warehousing Overview](https://example.com/data_warehousing_overview.png)
+![Data Warehousing Overview](https://blog.bismart.com/hubfs/La%20arquitectura%20y%20funcionamiento%20de%20un%20data%20warehouse.jpg)
 
 ---
 

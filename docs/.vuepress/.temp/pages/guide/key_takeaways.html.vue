@@ -23,7 +23,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="https://example.com/key_takeaways.png" alt="Key Takeaways"></p>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8pI12UN8L-0lMoCe-vrVY84PvA0sI71lhPg&amp;s" alt="Key Takeaways"></p>
 <hr>
 <h2 id="additional-insights" tabindex="-1"><a class="header-anchor" href="#additional-insights"><span>Additional Insights</span></a></h2>
 <ul>

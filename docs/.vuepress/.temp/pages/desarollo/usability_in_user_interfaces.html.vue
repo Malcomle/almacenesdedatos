@@ -1,0 +1,105 @@
+<template><div><h1 id="usability-in-user-interfaces" tabindex="-1"><a class="header-anchor" href="#usability-in-user-interfaces"><span>Usability in User Interfaces</span></a></h1>
+<p>Usability ensures a product can be used effectively, efficiently, and satisfactorily by its intended users.</p>
+<hr>
+<h2 id="_1-definition-of-usability" tabindex="-1"><a class="header-anchor" href="#_1-definition-of-usability"><span>1. Definition of Usability</span></a></h2>
+<ul>
+<li><strong>Usability</strong>: The degree to which a product enables specific users to achieve their goals in a particular context effectively, efficiently, and with satisfaction.</li>
+</ul>
+<h3 id="key-principles" tabindex="-1"><a class="header-anchor" href="#key-principles"><span>Key Principles</span></a></h3>
+<ul>
+<li><strong>Learnability</strong>, <strong>Efficiency</strong>, <strong>Memorability</strong>, <strong>Error Management</strong>, <strong>Satisfaction</strong>.</li>
+</ul>
+<hr>
+<h2 id="_2-common-usability-issues-in-web-pages" tabindex="-1"><a class="header-anchor" href="#_2-common-usability-issues-in-web-pages"><span>2. Common Usability Issues in Web Pages</span></a></h2>
+<ul>
+<li>Buttons resembling labels.</li>
+<li>Confusing action zones.</li>
+<li>Similar or ambiguous controls.</li>
+<li>Hard-to-remember interactions.</li>
+<li>Missing or broken links (e.g., 404 errors).</li>
+</ul>
+<hr>
+<h2 id="_3-emphasis-on-usability" tabindex="-1"><a class="header-anchor" href="#_3-emphasis-on-usability"><span>3. Emphasis on Usability</span></a></h2>
+<ul>
+<li><strong>Donald Norman</strong>: If a simple door needs instructions, it’s poorly designed.</li>
+<li>Usable software should minimize user frustration and cognitive load.</li>
+</ul>
+<hr>
+<h2 id="_4-misconceptions-about-usability" tabindex="-1"><a class="header-anchor" href="#_4-misconceptions-about-usability"><span>4. Misconceptions About Usability</span></a></h2>
+<ul>
+<li>“Users just need more training”</li>
+<li>“Usability is subjective and immeasurable”</li>
+<li>“Knowing style guides is enough”</li>
+<li>“Usability increases costs”</li>
+</ul>
+<hr>
+<h2 id="_5-usability-principles" tabindex="-1"><a class="header-anchor" href="#_5-usability-principles"><span>5. Usability Principles</span></a></h2>
+<ul>
+<li><strong>Consistency</strong>: Visual coherence across the interface.</li>
+<li><strong>Familiarity</strong>: Leverage prior user knowledge.</li>
+<li><strong>Learnability</strong>: Short learning curve.</li>
+<li><strong>Flexibility</strong>: Multiple interaction methods.</li>
+<li><strong>Recoverability</strong>: Easy error handling.</li>
+<li><strong>Feedback</strong>: System actively indicates status/actions.</li>
+<li><strong>Simplicity</strong>: Minimal clutter.</li>
+<li><strong>Visibility</strong>: Clear controls aligned with real-world expectations.</li>
+<li><strong>Availability</strong>: Objects accessible at the right time.</li>
+<li><strong>Personalization</strong>: Allows customization.</li>
+</ul>
+<hr>
+<h2 id="_6-user-centered-design" tabindex="-1"><a class="header-anchor" href="#_6-user-centered-design"><span>6. User-Centered Design</span></a></h2>
+<ul>
+<li>Involve users throughout design.</li>
+<li>Observe users in their work environment.</li>
+<li>Use prototypes (storyboards, mockups) for early testing.</li>
+</ul>
+<hr>
+<h2 id="_7-usability-s-four-pillars" tabindex="-1"><a class="header-anchor" href="#_7-usability-s-four-pillars"><span>7. Usability’s Four Pillars</span></a></h2>
+<ol>
+<li>User-Centered</li>
+<li>Context Knowledge</li>
+<li>User Satisfaction</li>
+<li>User Evaluation</li>
+</ol>
+<hr>
+<h2 id="_8-when-to-consider-usability" tabindex="-1"><a class="header-anchor" href="#_8-when-to-consider-usability"><span>8. When to Consider Usability</span></a></h2>
+<ul>
+<li><strong>Before the Project</strong>: Understand target users and key features.</li>
+<li><strong>During Development</strong>: Conduct usability tests.</li>
+<li><strong>After Release</strong>: Gather user feedback for improvements.</li>
+</ul>
+<hr>
+<h2 id="glossary" tabindex="-1"><a class="header-anchor" href="#glossary"><span>Glossary</span></a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Usability</strong></td>
+<td>The ease with which specific users can achieve their goals in a particular context</td>
+</tr>
+<tr>
+<td><strong>Donald Norman</strong></td>
+<td>Cognitive scientist who popularized user-centered design principles (known for the “door example”)</td>
+</tr>
+<tr>
+<td><strong>Cognitive Load</strong></td>
+<td>The mental effort needed to use the interface</td>
+</tr>
+<tr>
+<td><strong>User-Centered Design</strong></td>
+<td>Design methodology focusing on users’ needs throughout development</td>
+</tr>
+<tr>
+<td><strong>Heuristic Evaluation</strong></td>
+<td>An expert-based interface review method using usability principles (heuristics)</td>
+</tr>
+</tbody>
+</table>
+</div></template>
+
+

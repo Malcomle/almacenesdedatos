@@ -1,8 +1,3 @@
-Below is Theme 4 split into multiple Markdown files. Each file covers a logical subset of the content related to Data Warehousing Queries (OLAP SQL extensions, window functions, materialized views, dimension creation in Oracle, and MDX). The original text was in Spanish; here, it is presented in English for consistency with previous themes.
-
-Feel free to rename, reorder, or merge the files depending on your needs. At the end of each file, you will find a Glossary table with key terms mentioned in that file.
-
-
 # Introduction and Overview
 
 This document covers advanced queries in a Data Warehouse environment using SQL OLAP extensions. We will focus on how databases such as **AdventureWorksDW2019** and **AdventureWorks2019** handle OLAP-specific operations like ROLLUP, CUBE, GROUPING, window functions, and more.
@@ -448,40 +443,4 @@ WITH MEMBER [Product].[Category].[AccessoriesPlusComponents] AS
   [Product].[Category].[Accessories] + [Product].[Category].[Components]
 SELECT ...
 
-Glossary
-
-Term	Definition
-Tuple	A coordinate specifying a single cell in a cube (e.g., Year=2023, Gender=M)
-Set	A collection of members or tuples in MDX, denoted by { ... }
-CROSSJOIN	A function (or operator *) that returns the Cartesian product of two sets
-FILTER (MDX)	Filters a set based on a Boolean condition
-ORDER (MDX)	Sorts a set based on a numeric or string expression
-TopCount / BottomCount	MDX functions to pick the top or bottom N elements in a set based on a measure
-Calculated Member	A new member defined in MDX, often based on an expression over existing measures or members
-
----
-
-### How to Use These Files
-
-1. **Save Each File**  
-   As separate `.md` files, for example:
-   - `1_introduction_and_overview.md`
-   - `2_rollup_and_cube.md`
-   - `3_grouping_sets_and_grouping.md`
-   - `4_window_functions_and_ranking.md`
-   - `5_materialized_views_and_indexed_views.md`
-   - `6_dimension_creation_in_oracle.md`
-   - `7_introduction_mdx.md`
-   - `8_mdx_advanced_topics.md`
-
-2. **Adjust Links and Images**  
-   If you have diagrams or want to embed references, adapt the `![Alt Text](URL)` syntax as needed.
-
-3. **Extend or Modify**  
-   - Add more details or examples relevant to your specific environment (Oracle, SQL Server, etc.).  
-   - Include additional case studies or queries for hands-on practice.
-
-4. **Maintain the Glossaries**  
-   Each file ends with a glossary table for quick reference of technical terms introduced.
-
-By following this structure, you have a well-organized set of documents for **Theme 4**—covering advanced SQL OLAP queries, window functions, materialized views, dimension creation in Oracle, and MDX.
+--- 

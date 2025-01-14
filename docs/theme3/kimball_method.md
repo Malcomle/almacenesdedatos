@@ -3,6 +3,8 @@
 Ralph Kimball's methodology is a systematic approach to designing dimensional models. It simplifies the process of identifying business processes, defining granularity, selecting dimensions, and clarifying facts.
 
 ---
+![kimball](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_K9dREEY8L_xfHW0Udayf9rK5A5cWvxcIhg&s)
+
 
 ## Step 1: Select the Process
 

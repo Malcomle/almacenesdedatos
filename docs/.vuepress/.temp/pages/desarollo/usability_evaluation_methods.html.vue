@@ -1,0 +1,67 @@
+<template><div><h1 id="usability-evaluation-methods-for-user-interfaces" tabindex="-1"><a class="header-anchor" href="#usability-evaluation-methods-for-user-interfaces"><span>Usability Evaluation Methods for User Interfaces</span></a></h1>
+<p>Evaluating usability throughout development ensures the product meets real user needs.</p>
+<hr>
+<h2 id="_1-evaluating-usability" tabindex="-1"><a class="header-anchor" href="#_1-evaluating-usability"><span>1. Evaluating Usability</span></a></h2>
+<ul>
+<li><strong>Motivation</strong>: Confirm design quality before final release.</li>
+<li><strong>Core Principles</strong>: User-centered, context-aware, user satisfaction, user-determined usability.</li>
+</ul>
+<hr>
+<h2 id="_2-types-of-evaluation-methods" tabindex="-1"><a class="header-anchor" href="#_2-types-of-evaluation-methods"><span>2. Types of Evaluation Methods</span></a></h2>
+<h3 id="_1-inspection-methods" tabindex="-1"><a class="header-anchor" href="#_1-inspection-methods"><span>1. Inspection Methods</span></a></h3>
+<ul>
+<li><strong>Heuristic Evaluation</strong>: Experts compare UI against usability principles.</li>
+<li><strong>Cognitive Walkthrough</strong>: Experts simulate user tasks, focusing on learnability.</li>
+<li><strong>Standards Inspection</strong>: Checking compliance with ISO or corporate standards.</li>
+</ul>
+<h3 id="_2-inquiry-methods" tabindex="-1"><a class="header-anchor" href="#_2-inquiry-methods"><span>2. Inquiry Methods</span></a></h3>
+<ul>
+<li><strong>Field Observation</strong>: Observers watch users in real contexts.</li>
+<li><strong>Focus Groups</strong>: Group discussions for collective insights.</li>
+<li><strong>Interviews</strong>: One-on-one structured or semi-structured sessions.</li>
+<li><strong>Questionnaires</strong>: Collecting user feedback at various stages.</li>
+<li><strong>Logging</strong>: Automated tracking of user actions in production environments.</li>
+</ul>
+<h3 id="_3-testing-methods" tabindex="-1"><a class="header-anchor" href="#_3-testing-methods"><span>3. Testing Methods</span></a></h3>
+<ul>
+<li><strong>Performance Measurement</strong>: Time on tasks, error rates, help usage.</li>
+<li><strong>Thinking Aloud</strong>: Users vocalize thoughts while performing tasks.</li>
+<li><strong>Constructive Interaction</strong>: Pair-based testing (two users collaborating).</li>
+<li><strong>Wizard of Oz</strong>: An evaluator simulates system responses for unbuilt features.</li>
+<li><strong>Retrospective Testing</strong>: Users review recordings of their own interactions.</li>
+</ul>
+<hr>
+<h2 id="glossary" tabindex="-1"><a class="header-anchor" href="#glossary"><span>Glossary</span></a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Term</strong></th>
+<th><strong>Definition</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Heuristic Evaluation</strong></td>
+<td>A review by experts using a predefined list of usability principles (heuristics)</td>
+</tr>
+<tr>
+<td><strong>Cognitive Walkthrough</strong></td>
+<td>Experts following user tasks step-by-step to identify potential usability issues</td>
+</tr>
+<tr>
+<td><strong>Field Observation</strong></td>
+<td>Observing users in their natural environment to see real behavior and challenges</td>
+</tr>
+<tr>
+<td><strong>Thinking Aloud</strong></td>
+<td>A testing method where users speak their thoughts aloud while interacting with the system</td>
+</tr>
+<tr>
+<td><strong>Wizard of Oz</strong></td>
+<td>A technique where the evaluator secretly controls unimplemented features, simulating full functionality</td>
+</tr>
+</tbody>
+</table>
+</div></template>
+
+

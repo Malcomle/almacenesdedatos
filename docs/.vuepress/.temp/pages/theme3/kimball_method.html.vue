@@ -1,6 +1,7 @@
 <template><div><h1 id="kimball-s-4-step-methodology" tabindex="-1"><a class="header-anchor" href="#kimball-s-4-step-methodology"><span>Kimball's 4-Step Methodology</span></a></h1>
 <p>Ralph Kimball's methodology is a systematic approach to designing dimensional models. It simplifies the process of identifying business processes, defining granularity, selecting dimensions, and clarifying facts.</p>
 <hr>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_K9dREEY8L_xfHW0Udayf9rK5A5cWvxcIhg&amp;s" alt="kimball"></p>
 <h2 id="step-1-select-the-process" tabindex="-1"><a class="header-anchor" href="#step-1-select-the-process"><span>Step 1: Select the Process</span></a></h2>
 <ul>
 <li><strong>Goal</strong>: Identify the core business activity to model (e.g., sales, shipping, inventory).</li>

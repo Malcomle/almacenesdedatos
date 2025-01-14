@@ -14,7 +14,7 @@ These are the essential points to remember about how a Data Warehouse, OLAP, and
    - Simplifies data into facts and dimensions.  
    - Provides a robust framework for fast, intuitive analysis.
 
-![Key Takeaways](https://example.com/key_takeaways.png)
+![Key Takeaways](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8pI12UN8L-0lMoCe-vrVY84PvA0sI71lhPg&s)
 
 ---
 

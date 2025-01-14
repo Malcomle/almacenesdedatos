@@ -61,7 +61,7 @@ Facilitates multidimensional analysis for reporting, performance tracking (KPIs)
 </ul>
 </li>
 </ul>
-<p><img src="https://example.com/oltp_vs_olap.png" alt="OLTP vs. OLAP"></p>
+<p><img src="https://www.guru99.com/images/1/022218_0431_OLTPvsOLAPW1.png" alt="OLTP vs. OLAP"></p>
 <hr>
 <h2 id="why-the-difference-matters" tabindex="-1"><a class="header-anchor" href="#why-the-difference-matters"><span>Why the Difference Matters</span></a></h2>
 <ul>

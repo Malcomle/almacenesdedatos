@@ -15,6 +15,8 @@ Schema designs define how data is structured in a relational database for analyt
 2. **Fast Query Performance**: Minimal joins enhance performance in high-volume data scenarios.
 
 ---
+![star](https://media.geeksforgeeks.org/wp-content/uploads/Untitled-drawing-3-2.png)
+
 
 ## Snowflake Schema
 
@@ -27,6 +29,8 @@ Schema designs define how data is structured in a relational database for analyt
 2. **Suitable for Complex Datasets**: More flexible with highly detailed dimension attributes.
 
 ---
+![snowlfake](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Snowflake-schema.png/1200px-Snowflake-schema.png)
+
 
 ## Choosing a Schema
 - **Star Schema**: Ideal when query speed and simplicity are top priorities.  

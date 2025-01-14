@@ -1,6 +1,4 @@
-<template><div><p>Below is Theme 4 split into multiple Markdown files. Each file covers a logical subset of the content related to Data Warehousing Queries (OLAP SQL extensions, window functions, materialized views, dimension creation in Oracle, and MDX). The original text was in Spanish; here, it is presented in English for consistency with previous themes.</p>
-<p>Feel free to rename, reorder, or merge the files depending on your needs. At the end of each file, you will find a Glossary table with key terms mentioned in that file.</p>
-<h1 id="introduction-and-overview" tabindex="-1"><a class="header-anchor" href="#introduction-and-overview"><span>Introduction and Overview</span></a></h1>
+<template><div><h1 id="introduction-and-overview" tabindex="-1"><a class="header-anchor" href="#introduction-and-overview"><span>Introduction and Overview</span></a></h1>
 <p>This document covers advanced queries in a Data Warehouse environment using SQL OLAP extensions. We will focus on how databases such as <strong>AdventureWorksDW2019</strong> and <strong>AdventureWorks2019</strong> handle OLAP-specific operations like ROLLUP, CUBE, GROUPING, window functions, and more.</p>
 <h2 id="databases-for-olap-queries" tabindex="-1"><a class="header-anchor" href="#databases-for-olap-queries"><span>Databases for OLAP Queries</span></a></h2>
 <ul>
@@ -447,43 +445,7 @@ OVER() Clause	A clause that defines the window (partitioning and ordering) for a
 <span class="line">  [Product].[Category].[Accessories] + [Product].[Category].[Components]</span>
 <span class="line">SELECT ...</span>
 <span class="line"></span>
-<span class="line">Glossary</span>
-<span class="line"></span>
-<span class="line">Term	Definition</span>
-<span class="line">Tuple	A coordinate specifying a single cell in a cube (e.g., Year=2023, Gender=M)</span>
-<span class="line">Set	A collection of members or tuples in MDX, denoted by { ... }</span>
-<span class="line">CROSSJOIN	A function (or operator *) that returns the Cartesian product of two sets</span>
-<span class="line">FILTER (MDX)	Filters a set based on a Boolean condition</span>
-<span class="line">ORDER (MDX)	Sorts a set based on a numeric or string expression</span>
-<span class="line">TopCount / BottomCount	MDX functions to pick the top or bottom N elements in a set based on a measure</span>
-<span class="line">Calculated Member	A new member defined in MDX, often based on an expression over existing measures or members</span>
-<span class="line"></span>
-<span class="line">---</span>
-<span class="line"></span>
-<span class="line">### How to Use These Files</span>
-<span class="line"></span>
-<span class="line">1. **Save Each File**  </span>
-<span class="line">   As separate `.md` files, for example:</span>
-<span class="line">   - `1_introduction_and_overview.md`</span>
-<span class="line">   - `2_rollup_and_cube.md`</span>
-<span class="line">   - `3_grouping_sets_and_grouping.md`</span>
-<span class="line">   - `4_window_functions_and_ranking.md`</span>
-<span class="line">   - `5_materialized_views_and_indexed_views.md`</span>
-<span class="line">   - `6_dimension_creation_in_oracle.md`</span>
-<span class="line">   - `7_introduction_mdx.md`</span>
-<span class="line">   - `8_mdx_advanced_topics.md`</span>
-<span class="line"></span>
-<span class="line">2. **Adjust Links and Images**  </span>
-<span class="line">   If you have diagrams or want to embed references, adapt the `![Alt Text](URL)` syntax as needed.</span>
-<span class="line"></span>
-<span class="line">3. **Extend or Modify**  </span>
-<span class="line">   - Add more details or examples relevant to your specific environment (Oracle, SQL Server, etc.).  </span>
-<span class="line">   - Include additional case studies or queries for hands-on practice.</span>
-<span class="line"></span>
-<span class="line">4. **Maintain the Glossaries**  </span>
-<span class="line">   Each file ends with a glossary table for quick reference of technical terms introduced.</span>
-<span class="line"></span>
-<span class="line">By following this structure, you have a well-organized set of documents for **Theme 4**—covering advanced SQL OLAP queries, window functions, materialized views, dimension creation in Oracle, and MDX.</span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+<span class="line">--- </span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

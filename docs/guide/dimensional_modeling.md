@@ -29,7 +29,7 @@ A bookstore wants to analyze its sales:
   - **Genre**: Science fiction, historical novel, thriller, etc.  
   - **Sale Date**: Day, month, year, season.
 
-![Dimensional Modeling Example](https://example.com/dimensional_modeling_example.png)
+![Dimensional Modeling Example](https://gravitar.biz/wp-content/uploads/2020/08/metodologias-de-data-warehouse-02-1.png)
 
 ---
 

@@ -58,17 +58,3 @@ This module covers **Dimensional Design** with detailed explanations of Kimballâ
 
 ---
 
-# Theme 4: Queries in Data Warehousing
-
-This theme focuses on advanced SQL and MDX queries, covering OLAP extensions, grouping sets, window functions, materialized views, and hierarchies in Oracle.
-
-## Table of Contents
-
-- [OLAP Extensions in SQL](./theme4/olap_sql_extensions.md)
-- [GROUPING SETS and Extensions](./theme4/grouping_sets.md)
-- [Window Functions](./theme4/window_functions.md)
-- [Materialized Views](./theme4/materialized_views.md)
-- [Oracle Dimensions and Hierarchies](./theme4/oracle_dimensions_hierarchies.md)
-- [MDX Queries](./theme4/mdx_queries.md)
-
-This guide is comprehensive, practical, and illustrated with real-world examples and diagrams.

@@ -33,7 +33,7 @@ A variant of the star schema with more normalized dimensions. While it reduces d
 </ul>
 </li>
 </ul>
-<p><img src="https://example.com/dimensional_modeling_example.png" alt="Dimensional Modeling Example"></p>
+<p><img src="https://gravitar.biz/wp-content/uploads/2020/08/metodologias-de-data-warehouse-02-1.png" alt="Dimensional Modeling Example"></p>
 <hr>
 <h2 id="applications" tabindex="-1"><a class="header-anchor" href="#applications"><span>Applications</span></a></h2>
 <ol>

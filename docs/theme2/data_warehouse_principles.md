@@ -11,7 +11,9 @@ A data warehouse is a central repository designed to consolidate, integrate, and
 - **Non-Volatile**: Once data is loaded, it is not typically updated or deleted; historical data remains intact for analysis.  
 - **Time-Variant**: Contains a historical record of data changes over time, enabling trend and variance analyses.
 
+
 ---
+![Inmon's Data Warehouse](https://files.codingninjas.in/article_images/inmon-approach-in-data-warehouse-designing-0-1653158095.webp)
 
 ## Kimball's Approach
 
@@ -22,6 +24,7 @@ A data warehouse is a central repository designed to consolidate, integrate, and
   - **Kimball**: Adopts a decentralized, bottom-up approach, building department-level Data Marts that eventually integrate.
 
 ---
+![Inmon's Data Warehouse](https://media.geeksforgeeks.org/wp-content/uploads/20200717001130/Kimball.png)
 
 ## Choosing the Right Approach
 - **Enterprise Complexity**: Large, complex organizations often require the enterprise-wide consistency of Inmon’s approach.  
